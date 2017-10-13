@@ -20,7 +20,7 @@ class Scraper
   end
   books_array
 
-  binding.pry
+
   # sections = doc.css(".subcategory").text
   # first book title = doc.css(".subcategory").first.css("ol li:nth-child(1) .title").text.strip
   # first book author = doc.css(".subcategory").first.css("ol li:nth-child(1) .author").text.strip
