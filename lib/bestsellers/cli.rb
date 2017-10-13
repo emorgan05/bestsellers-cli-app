@@ -18,10 +18,8 @@ class Bestsellers::CLI
   end
 
   def list_books
-    counter = 1
-    Book.all.each do |book|
-      puts "#{counter}. #{book.title} #{book.author}"
-      counter += 1
+    Book.all.each_with_index do |book, i|
+      puts "#{i}. #{book.title} #{book.author}"
     end
 
     puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
