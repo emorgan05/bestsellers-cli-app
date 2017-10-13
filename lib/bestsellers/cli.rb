@@ -4,7 +4,7 @@ class Bestsellers::CLI
     puts "Welcome to the New York Times Bestseller List!"
     puts "Are you ready to find your next good read?"
     puts ""
-    list_categories
+    # list_categories
     list_books
     book_details
   end
@@ -18,14 +18,15 @@ class Bestsellers::CLI
   end
 
   def list_books
-    if @category_input == "1"
-      puts "Category: Print and Ebook Fiction"
-      puts "1. Origin by Dan Brown"
-      puts "2. The Sun and Her Flowers by Rupi Kaur"
-      puts "3. Sleeping Beauties by Steven King and Owen King"
-      puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
-      @books_input = gets.strip
+    counter = 1
+    Book.all.each do |book|
+      puts "#{counter}. #{book.title} #{book.author}"
+      counter += 1
     end
+
+    puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
+    @books_input = gets.strip
+
     case @books_input
     when is_a?(Integer)
       book_details

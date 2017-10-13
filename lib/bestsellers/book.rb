@@ -4,16 +4,14 @@ class Book
 
   @@all = []
 
-  def initialize(book_hash)
-    book_hash.each do |key, value|
-      self.send(("#{key}="), value)
-    end
+  def initialize
     if self.title != ""
       @@all << self
     end
   end
 
-  def new_from_collection(Scraper.new)
+  # Scraper.new.book_scraper("https://www.nytimes.com/books/best-sellers/")
+  def new_from_collection(books_array)
     books_array.each do |book|
       Book.new(book)
     end
