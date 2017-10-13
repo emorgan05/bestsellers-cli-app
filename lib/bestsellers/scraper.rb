@@ -7,25 +7,19 @@ class Scraper
 
   books_array = []
 
-  book_counter = 1
-  category = doc.css("section")
-
-  category.each do |books|
-    books.each do |book|
-      hash = {
-        :title => category.css("ol li").css(".title").text.strip
-      }
-    end
+  doc.css(".subcategory ol li").each do |book|
+    hash = {
+      :title => book.css(".title").text.strip,
+      :author => book.css(".author").text.strip,
+      :description => book.css(".description").text.strip,
+      :weeks_on_list => book.css(".freshness").text.strip,
+      # :amazon_url => book.css("ul li button").attribute("data-amazon").value.strip,
+      # :category => doc.css(".subcategory h2 a").attribute("data-version").text.strip
+    }
+    books_array << hash
   end
+  books_array
 
-  # category = doc.css(".subcategory")
-  # category.each do |books|
-  #   books.each do |book|
-  #     hash = {
-  #       :title => doc.css(".subcategory").first.css("ol li:nth-child(1) .title").text.strip
-  #     }
-  #   end
-  # end
   binding.pry
   # sections = doc.css(".subcategory").text
   # first book title = doc.css(".subcategory").first.css("ol li:nth-child(1) .title").text.strip
@@ -35,4 +29,5 @@ class Scraper
   # first book amazon url = doc.css(".subcategory").first.css("ol li:nth-child(1) ul li button").attribute("data-amazon").value.strip
 
   # #main > div.view.landing-view > section:nth-child(1) > ol > li:nth-child(1) > article > div > h3
+  # #main > div.view.landing-view > section:nth-child(1) > ol > li:nth-child(1) > ul > li > button
 end
