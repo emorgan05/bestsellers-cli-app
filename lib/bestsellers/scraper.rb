@@ -2,7 +2,7 @@ require "nokogiri"
 require "open-uri"
 require "pry"
 
-class Scraper
+class Bestsellers::Scraper
   def self.book_scraper(url)
     doc = Nokogiri::HTML(open(url))
 

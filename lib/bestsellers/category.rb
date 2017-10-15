@@ -1,3 +1,3 @@
-class Category
+class Bestsellers::Category
 
 end

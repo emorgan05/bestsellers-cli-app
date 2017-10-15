@@ -4,7 +4,7 @@ class Bestsellers::CLI
     puts "Welcome to the New York Times Bestseller List!"
     puts "Are you ready to find your next good read?"
     puts ""
-    # list_categories
+    list_categories
     list_books
     book_details
   end

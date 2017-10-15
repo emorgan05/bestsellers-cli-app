@@ -1,4 +1,4 @@
-class Book
+class Bestsellers::Book
 
   attr_accessor :title, :author, :description, :weeks_on_list, :amazon_url, :category
 
