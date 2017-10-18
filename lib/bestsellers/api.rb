@@ -6,9 +6,6 @@ class Bestsellers::API
     @list_data = JSON.parse(lists)
     @list_data["results"]["lists"].each do |list|
       Bestsellers::Category.new_from_json(list)
-      list["books"].each do |book|
-        Bestsellers::Book.new_from_json(list, book)
-      end
     end
   end
 

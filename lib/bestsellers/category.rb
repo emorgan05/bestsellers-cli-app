@@ -15,6 +15,9 @@ class Bestsellers::Category
 
   def self.new_from_json(list)
     self.new(list["list_name"]).save
+    list["books"].each do |book|
+      Bestsellers::Book.new_from_json(list, book)
+    end
   end
 
   def self.all
