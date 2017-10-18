@@ -4,21 +4,24 @@ class Bestsellers::Book
 
   @@all = []
 
-  def initialize
-    if self.title != ""
+  def initialize(title, author, description, weeks_on_list, amazon_url, category = nil)
+    @title = title
+    @author = author
+    @description = description
+    @weeks_on_list = weeks_on_list
+    @amazon_url = amazon_url
+    @category = category
+  end
+
+  def save
+    if !@@all.include?(self)
       @@all << self
     end
   end
 
-  def self.new_from_json(books)
-    puts books.inspect
+  def self.new_from_json(book)
+    self.new(book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"]).save
   end
-
-  # def new_from_collection(Scraper.new.book_scraper("https://www.nytimes.com/books/best-sellers/"))
-  #   books_array.each do |book|
-  #     Book.new(book)
-  #   end
-  # end
 
   def self.all
     @@all

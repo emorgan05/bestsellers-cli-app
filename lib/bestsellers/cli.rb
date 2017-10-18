@@ -11,9 +11,9 @@ class Bestsellers::CLI
   end
 
   def list_categories
-    puts "1. Print and Ebook Fiction"
-    puts "2. Hardcover Fiction"
-    puts "3. Print and Ebook Nonfiction"
+    Bestsellers::Category.all.each.with_index(1) do |category, index|
+      puts "#{index}. #{category.name}"
+    end
     puts "Choose a number to see the top five books in that category:"
     @category_input = gets.strip
   end
