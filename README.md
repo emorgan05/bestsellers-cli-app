@@ -1,8 +1,8 @@
 # Bestsellers
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bestsellers`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the Bestsellers CLI App/Gem! The app lets you explore this week's bestselling books by pulling data from the New York Times Books API.
+You can view the categories included on the bestsellers list, the top 5 books from each category, and the details about each book.
+Check back regularly to find your next good read.
 
 ## Installation
 
@@ -22,7 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Executing the program will take you directly to the full list of categories on the New York Times Bestseller List.
+From there, follow the prompts to see the top 5 books in a specific category, and to get all the details on a specific book. 
 
 ## Development
 
