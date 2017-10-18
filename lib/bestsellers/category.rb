@@ -15,7 +15,6 @@ class Bestsellers::Category
 
   def self.new_from_json(list)
     self.new(list["list_name"]).save
-    binding.pry
   end
 
   def self.all
