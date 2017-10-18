@@ -5,7 +5,12 @@ class Bestsellers::CLI
     puts "Welcome to the New York Times Bestseller List!"
     puts "Are you ready to find your next good read?"
     puts ""
+
     list_categories
+    puts ""
+    puts "Choose a number to see the top five books in that category:"
+    @category_input = gets.strip
+    
     list_books
     book_details
   end
@@ -14,20 +19,23 @@ class Bestsellers::CLI
     Bestsellers::Category.all.each.with_index(1) do |category, index|
       puts "#{index}. #{category.name}"
     end
-    puts "Choose a number to see the top five books in that category:"
-    @category_input = gets.strip
   end
 
   def list_books
-    # Book.all.each_with_index do |book, i|
-    #   puts "#{i}. #{book.title} #{book.author}"
-    # end
+    category = Bestsellers::Category.all[@category_input.to_i - 1].name
 
+    @book_array = Bestsellers::Book.find_by_category(category)
+
+    @book_array.each.with_index(1) do |book, index|
+      puts "#{index}. #{book.title} by #{book.author}"
+    end
+
+    puts ""
     puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
     @books_input = gets.strip
 
     case @books_input
-    when is_a?(Integer)
+    when is_a?(Integer) # problem here
       book_details
     when 'category list'
       list_categories
@@ -37,13 +45,13 @@ class Bestsellers::CLI
   end
 
   def book_details
-    if @books_input == "1"
-      puts "Origin"
-      puts "Dan Brown"
-      puts "After reconnecting with one of his first students, who is now a billionaire futurist, symbology professor Robert Langdon must go on a perilous quest with a beautiful museum director."
-      puts "New this week"
-      puts "https://www.amazon.com/Origin-Novel-Dan-Brown-ebook/dp/B01LY7FD0D?tag=NYTBS-20"
-    end
+    book = @book_array[@books_input.to_i - 1]
+    puts "#{book.title} by #{book.author}"
+    puts "Summary: #{book.description}"
+    puts "Weeks on the Bestsellers List: #{book.weeks_on_list}"
+    puts "Find on Amazon: #{book.amazon_url}"
+    puts ""
+
     puts "Type 'book list' to return to the list of books in this section, type 'category list' to return to the list of categories, or 'exit'"
     @book_details_input = gets.strip
     case @book_details_input

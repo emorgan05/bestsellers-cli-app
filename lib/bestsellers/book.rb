@@ -4,13 +4,13 @@ class Bestsellers::Book
 
   @@all = []
 
-  def initialize(title, author, description, weeks_on_list, amazon_url, category = nil)
+  def initialize(category, title, author, description, weeks_on_list, amazon_url)
+    @category = category
     @title = title
     @author = author
     @description = description
     @weeks_on_list = weeks_on_list
     @amazon_url = amazon_url
-    @category = category
   end
 
   def save
@@ -19,12 +19,18 @@ class Bestsellers::Book
     end
   end
 
-  def self.new_from_json(book)
-    self.new(book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"]).save
+  def self.new_from_json(list, book)
+    self.new(list["list_name"], book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"]).save
   end
 
   def self.all
     @@all
+  end
+
+  def self.find_by_category(category)
+    @@all.select do |a|
+      a.category == category
+    end
   end
 
 end
