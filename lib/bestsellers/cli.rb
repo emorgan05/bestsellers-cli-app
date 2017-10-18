@@ -1,6 +1,7 @@
 class Bestsellers::CLI
 
   def call
+    Bestsellers::API.bestsellers_list
     puts "Welcome to the New York Times Bestseller List!"
     puts "Are you ready to find your next good read?"
     puts ""
@@ -18,9 +19,9 @@ class Bestsellers::CLI
   end
 
   def list_books
-    Book.all.each_with_index do |book, i|
-      puts "#{i}. #{book.title} #{book.author}"
-    end
+    # Book.all.each_with_index do |book, i|
+    #   puts "#{i}. #{book.title} #{book.author}"
+    # end
 
     puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
     @books_input = gets.strip

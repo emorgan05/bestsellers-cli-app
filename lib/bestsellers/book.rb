@@ -10,11 +10,15 @@ class Bestsellers::Book
     end
   end
 
-  def new_from_collection(Scraper.new.book_scraper("https://www.nytimes.com/books/best-sellers/"))
-    books_array.each do |book|
-      Book.new(book)
-    end
+  def self.new_from_json(books)
+    puts books.inspect
   end
+
+  # def new_from_collection(Scraper.new.book_scraper("https://www.nytimes.com/books/best-sellers/"))
+  #   books_array.each do |book|
+  #     Book.new(book)
+  #   end
+  # end
 
   def self.all
     @@all
