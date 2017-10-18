@@ -44,6 +44,7 @@ class Bestsellers::CLI
   end
 
   def category_choice
+    puts ""
     puts "Choose a number to see the top five books in that category or type 'exit'"
     @category_input = gets.strip
   end
@@ -59,6 +60,7 @@ class Bestsellers::CLI
   end
 
   def books_choice
+    puts ""
     puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
     @books_input = gets.strip
   end
@@ -73,6 +75,7 @@ class Bestsellers::CLI
   end
 
   def details_choice
+    puts ""
     puts "Type 'book list' to return to the list of books in this section, type 'category list' to return to the list of categories, or 'exit'"
     @details_input = gets.strip
   end
