@@ -20,7 +20,8 @@ class Bestsellers::Book
   end
 
   def self.new_from_json(list, book)
-    self.new(list["list_name"], book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"]).save
+    book = self.new(list["list_name"], book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"])
+    book.save
   end
 
   def self.all

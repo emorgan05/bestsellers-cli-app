@@ -1,5 +1,5 @@
 class Bestsellers::Category
-  attr_accessor :name
+  attr_accessor :name, :books
 
   @@all = []
 
@@ -14,7 +14,8 @@ class Bestsellers::Category
   end
 
   def self.new_from_json(list)
-    self.new(list["list_name"]).save
+    category = self.new(list["list_name"])
+    category.save
     list["books"].each do |book|
       Bestsellers::Book.new_from_json(list, book)
     end
