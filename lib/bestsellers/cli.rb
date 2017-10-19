@@ -5,35 +5,40 @@ class Bestsellers::CLI
     puts "Welcome to the New York Times Bestseller List!"
     puts "Are you ready to find your next good read?"
     puts ""
-    menu
+    category_menu
   end
 
-  def menu
-    input = nil
+  def category_menu
     list_categories
     category_choice
     if @category_input == "exit"
       goodbye
     else
-      @category_input = @category_input.to_i
-      list_books
-      books_choice
-      if @books_input == "exit"
-        goodbye
-      elsif @books_input == "category list"
-        menu
-      else
-        @books_input = @books_input.to_i
-        book_details
-        details_choice
-        if @details_input == "exit"
-          goodbye
-        elsif @details_input == "category list"
-          menu
-        elsif @details_input == "book_list"
-          menu
-        end
-      end
+      book_list_menu
+    end
+  end
+
+  def book_list_menu
+    list_books
+    books_choice
+    if @books_input == "exit"
+      goodbye
+    elsif @books_input == "category list"
+      category_menu
+    else
+      book_details_menu
+    end
+  end
+
+  def book_details_menu
+    book_details
+    details_choice
+    if @details_input == "exit"
+      goodbye
+    elsif @details_input == "category list"
+      category_menu
+    elsif @details_input == "book list"
+      book_list_menu
     end
   end
 
@@ -50,7 +55,7 @@ class Bestsellers::CLI
   end
 
   def list_books
-    category = Bestsellers::Category.all[@category_input - 1]
+    category = Bestsellers::Category.all[@category_input.to_i - 1]
 
     @book_array = Bestsellers::Book.find_by_category(category)
 
@@ -66,7 +71,7 @@ class Bestsellers::CLI
   end
 
   def book_details
-    book = @book_array[@books_input - 1]
+    book = @book_array[@books_input.to_i - 1]
     puts "#{book.title} by #{book.author}".colorize(:green)
     puts "Summary:".colorize(:blue) + " #{book.description}"
     puts "Weeks on the Bestsellers List:".colorize(:blue) + " #{book.weeks_on_list}"
