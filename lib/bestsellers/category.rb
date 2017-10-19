@@ -5,6 +5,7 @@ class Bestsellers::Category
 
   def initialize(name)
     @name = name
+    @books = []
   end
 
   def save
@@ -17,7 +18,8 @@ class Bestsellers::Category
     category = self.new(list["list_name"])
     category.save
     list["books"].each do |book|
-      Bestsellers::Book.new_from_json(category, book)
+      book = Bestsellers::Book.new_from_json(category, book)
+      category.books << book
     end
   end
 
