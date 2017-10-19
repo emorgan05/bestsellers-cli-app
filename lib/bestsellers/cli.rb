@@ -6,6 +6,7 @@ class Bestsellers::CLI
     puts "Are you ready to find your next good read?"
     puts ""
     category_menu
+    goodbye
   end
 
   # Menus for each portion of user category_choice
@@ -55,7 +56,7 @@ class Bestsellers::CLI
   def category_choice
     puts ""
     puts "Choose a number to see the top five books in that category or type 'exit'"
-    @category_input = gets.strip
+    @category_input = gets.strip.downcase
   end
 
   # Methods for listing the top 5 books_choice
@@ -73,7 +74,7 @@ class Bestsellers::CLI
   def books_choice
     puts ""
     puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
-    @books_input = gets.strip
+    @books_input = gets.strip.downcase
   end
 
   # Methods for listing details about one book
@@ -90,10 +91,11 @@ class Bestsellers::CLI
   def details_choice
     puts ""
     puts "Type 'book list' to return to the list of books in this section, type 'category list' to return to the list of categories, or 'exit'"
-    @details_input = gets.strip
+    @details_input = gets.strip.downcase
   end
 
   def goodbye
     "Come back soon for your next good read!"
+    exit
   end
 end
