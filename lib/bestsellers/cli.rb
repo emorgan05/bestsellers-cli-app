@@ -16,8 +16,11 @@ class Bestsellers::CLI
     category_choice
     if @category_input == "exit"
       goodbye
-    else
+    elsif @category_input < Category.all.size
       book_list_menu
+    else
+      puts "Does not compute..."
+      category_menu
     end
   end
 
@@ -28,8 +31,11 @@ class Bestsellers::CLI
       goodbye
     elsif @books_input == "category list"
       category_menu
-    else
+    elsif @books_input < @book_array.size
       book_details_menu
+    else
+      puts "Does not compute..."
+      book_list_menu
     end
   end
 
@@ -42,6 +48,9 @@ class Bestsellers::CLI
       category_menu
     elsif @details_input == "book list"
       book_list_menu
+    else
+      puts "Does not compute..."
+      details_choice
     end
   end
 
