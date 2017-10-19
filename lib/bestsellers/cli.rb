@@ -50,7 +50,7 @@ class Bestsellers::CLI
   end
 
   def list_books
-    category = Bestsellers::Category.all[@category_input - 1].name
+    category = Bestsellers::Category.all[@category_input - 1]
 
     @book_array = Bestsellers::Book.find_by_category(category)
 
@@ -68,9 +68,9 @@ class Bestsellers::CLI
   def book_details
     book = @book_array[@books_input - 1]
     puts "#{book.title} by #{book.author}".colorize(:green)
-    puts "Summary:".colorize(:blue) " #{book.description}"
-    puts "Weeks on the Bestsellers List:".colorize(:blue) " #{book.weeks_on_list}"
-    puts "Find on Amazon:".colorize(:blue) " #{book.amazon_url}"
+    puts "Summary:".colorize(:blue) + " #{book.description}"
+    puts "Weeks on the Bestsellers List:".colorize(:blue) + " #{book.weeks_on_list}"
+    puts "Find on Amazon:".colorize(:blue) + " #{book.amazon_url}"
     puts ""
   end
 

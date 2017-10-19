@@ -17,7 +17,7 @@ class Bestsellers::Category
     category = self.new(list["list_name"])
     category.save
     list["books"].each do |book|
-      Bestsellers::Book.new_from_json(list, book)
+      Bestsellers::Book.new_from_json(category, book)
     end
   end
 

@@ -1,6 +1,6 @@
 class Bestsellers::Book
 
-  attr_accessor :title, :author, :description, :weeks_on_list, :amazon_url, :category
+  attr_accessor :category, :title, :author, :description, :weeks_on_list, :amazon_url
 
   @@all = []
 
@@ -19,8 +19,8 @@ class Bestsellers::Book
     end
   end
 
-  def self.new_from_json(list, book)
-    book = self.new(list["list_name"], book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"])
+  def self.new_from_json(category, book)
+    book = self.new(category, book["title"], book["author"], book["description"], book["weeks_on_list"], book["amazon_product_url"])
     book.save
   end
 
@@ -30,7 +30,7 @@ class Bestsellers::Book
 
   def self.find_by_category(category)
     @@all.select do |a|
-      a.category == category
+      a.category.name == category.name
     end
   end
 
