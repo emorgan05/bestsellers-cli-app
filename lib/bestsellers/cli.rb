@@ -8,6 +8,8 @@ class Bestsellers::CLI
     category_menu
   end
 
+  # Menus for each portion of user category_choice
+
   def category_menu
     list_categories
     category_choice
@@ -42,6 +44,8 @@ class Bestsellers::CLI
     end
   end
 
+  # Methods for the category
+
   def list_categories
     Bestsellers::Category.all.each.with_index(1) do |category, index|
       puts "#{index}. #{category.name}"
@@ -53,6 +57,8 @@ class Bestsellers::CLI
     puts "Choose a number to see the top five books in that category or type 'exit'"
     @category_input = gets.strip
   end
+
+  # Methods for listing the top 5 books_choice
 
   def list_books
     category = Bestsellers::Category.all[@category_input.to_i - 1]
@@ -69,6 +75,8 @@ class Bestsellers::CLI
     puts "Choose a number for full details about the book, type 'category list' to return to the list of categories, or 'exit'"
     @books_input = gets.strip
   end
+
+  # Methods for listing details about one book
 
   def book_details
     book = @book_array[@books_input.to_i - 1]
