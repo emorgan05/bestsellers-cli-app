@@ -1,6 +1,7 @@
 require "rest-client"
 require "json"
 require "pry"
+require "colorize"
 
 require_relative "./bestsellers/version"
 require_relative "./bestsellers/cli"

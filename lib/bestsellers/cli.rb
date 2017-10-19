@@ -67,10 +67,10 @@ class Bestsellers::CLI
 
   def book_details
     book = @book_array[@books_input - 1]
-    puts "#{book.title} by #{book.author}"
-    puts "Summary: #{book.description}"
-    puts "Weeks on the Bestsellers List: #{book.weeks_on_list}"
-    puts "Find on Amazon: #{book.amazon_url}"
+    puts "#{book.title} by #{book.author}".colorize(:green)
+    puts "Summary:".colorize(:blue) " #{book.description}"
+    puts "Weeks on the Bestsellers List:".colorize(:blue) " #{book.weeks_on_list}"
+    puts "Find on Amazon:".colorize(:blue) " #{book.amazon_url}"
     puts ""
   end
 
