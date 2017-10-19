@@ -50,7 +50,7 @@ class Bestsellers::CLI
       book_list_menu
     else
       puts "Does not compute..."
-      details_choice
+      book_details_menu
     end
   end
 
