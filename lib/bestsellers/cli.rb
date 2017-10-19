@@ -19,7 +19,7 @@ class Bestsellers::CLI
     elsif @category_input.to_i != 0 && @category_input.to_i <= Bestsellers::Category.all.size
       book_list_menu
     else
-      puts "Does not compute..."
+      puts "Does not compute...".colorize(:red)
       category_menu
     end
   end
@@ -34,7 +34,7 @@ class Bestsellers::CLI
     elsif @books_input.to_i != 0 && @books_input.to_i <= @book_array.size
       book_details_menu
     else
-      puts "Does not compute..."
+      puts "Does not compute...".colorize(:red)
       book_list_menu
     end
   end
@@ -49,7 +49,7 @@ class Bestsellers::CLI
     elsif @details_input == "book list"
       book_list_menu
     else
-      puts "Does not compute..."
+      puts "Does not compute...".colorize(:red)
       book_details_menu
     end
   end

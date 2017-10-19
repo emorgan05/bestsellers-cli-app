@@ -28,5 +28,3 @@ class Bestsellers::Category
   end
 
 end
-
-# Bestsellers::Book.new(self, "Origin", "Dan Brown", "Second verse same as the first", "1", "www.amazon.com")
