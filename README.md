@@ -22,8 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
+To launch the program, type
+```ruby
+$ ruby bin/bestsellers
+```
+into your terminal
+
 Executing the program will take you directly to the full list of categories on the New York Times Bestseller List.
-From there, follow the prompts to see the top 5 books in a specific category, and to get all the details on a specific book. 
+From there, follow the prompts to see the top 5 books in a specific category, and to get all the details on a specific book.
 
 ## Development
 
